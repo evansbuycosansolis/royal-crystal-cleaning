@@ -1,5 +1,5 @@
 ---
-import { business } from '../data/site';
+import { businessContact, getAbsoluteUrl, type Locale, type PageKey } from '../i18n';
 
 interface Props {
   title: string;
@@ -7,7 +7,8 @@ interface Props {
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
-  path?: string;
+  locale: Locale;
+  pageKey: PageKey;
   noindex?: boolean;
 }
 
@@ -16,30 +17,36 @@ const {
   description,
   ogTitle,
   ogDescription,
-  ogImage = new URL('/og-image.png', business.url).toString(),
-  path,
+  ogImage = new URL('/og-image.png', businessContact.url).toString(),
+  locale,
+  pageKey,
   noindex = false,
 } = Astro.props;
 
 const resolvedOgTitle = ogTitle ?? title;
 const resolvedOgDescription = ogDescription ?? description;
-const canonicalPath =
-  path ?? (Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, ''));
-const canonicalUrl = new URL(canonicalPath, business.url).toString();
+const canonicalUrl = getAbsoluteUrl(locale, pageKey);
+const enUrl = getAbsoluteUrl('en', pageKey);
+const frUrl = getAbsoluteUrl('fr', pageKey);
+const ogLocale = locale === 'fr' ? 'fr_CA' : 'en_US';
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
 <link rel="canonical" href={canonicalUrl} />
+<link rel="alternate" hreflang="en" href={enUrl} />
+<link rel="alternate" hreflang="fr-CA" href={frUrl} />
+<link rel="alternate" hreflang="x-default" href={enUrl} />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
+<meta property="og:locale" content={ogLocale} />
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:title" content={resolvedOgTitle} />
 <meta property="og:description" content={resolvedOgDescription} />
 <meta property="og:image" content={ogImage} />
-<meta property="og:site_name" content={business.name} />
+<meta property="og:site_name" content="Royal Crystal Cleaning" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />

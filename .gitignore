@@ -4,6 +4,7 @@ dist/
 
 # Generated files
 .astro/
+astro-dev-*.log
 
 # Dependencies
 node_modules/

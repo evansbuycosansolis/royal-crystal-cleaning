@@ -1,0 +1,23 @@
+---
+import Layout from '../Layout.astro';
+import ServiceDetail from '../ServiceDetail.astro';
+import { businessContact, getServiceByKey, type Locale, type PageKey } from '../../i18n';
+
+interface Props {
+  locale?: Locale;
+  pageKey: Extract<PageKey, 'cleaning' | 'maintenance' | 'lawnGarden'>;
+}
+
+const { locale = 'en', pageKey } = Astro.props;
+const service = getServiceByKey(locale, pageKey);
+---
+
+<Layout
+  title={service.metaTitle}
+  description={service.metaDescription}
+  ogImage={new URL(service.image, businessContact.url).toString()}
+  locale={locale}
+  pageKey={pageKey}
+>
+  <ServiceDetail service={service} locale={locale} />
+</Layout>

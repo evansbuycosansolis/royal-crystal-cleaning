@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { business } from '../data/site';
+import { businessContact, getContent, getRoute, type Locale } from '../i18n';
 
 interface Props {
   headline: string;
@@ -8,6 +8,7 @@ interface Props {
   text: string;
   showButtons?: boolean;
   image?: string;
+  locale?: Locale;
 }
 
 const {
@@ -16,7 +17,22 @@ const {
   text,
   showButtons = true,
   image = '/images/hero-cleaning.webp',
+  locale = 'en',
 } = Astro.props;
+
+const t = getContent(locale);
+const heroCards =
+  locale === 'fr'
+    ? [
+        ['Résidentiel', 'Maisons, condos, appartements'],
+        ['Commercial', 'Bureaux et aires communes'],
+        ['Extérieur', 'Pelouses, jardins, entretien'],
+      ]
+    : [
+        ['Residential', 'Homes, condos, apartments'],
+        ['Commercial', 'Offices and shared spaces'],
+        ['Outdoor', 'Lawns, gardens, upkeep'],
+      ];
 ---
 
 <section class="relative min-h-[calc(100svh-7rem)] overflow-hidden bg-blue-950 text-white">
@@ -34,7 +50,7 @@ const {
     <div class="max-w-3xl reveal">
       <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold text-blue-50 shadow-xl shadow-blue-950/20 backdrop-blur-md">
         <Icon name="sparkles" class="h-4 w-4 text-green-300" />
-        {business.tagline}
+        {t.business.tagline}
       </div>
 
       <h1 class="max-w-3xl text-5xl font-black leading-[1.04] text-white sm:text-6xl lg:text-7xl">
@@ -48,17 +64,17 @@ const {
       {showButtons && (
         <div class="mt-9 flex flex-col gap-3 sm:flex-row">
           <a
-            href={business.phoneHref}
+            href={businessContact.phoneHref}
             class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-base font-black text-blue-950 shadow-xl shadow-blue-950/25 transition hover:-translate-y-0.5 hover:bg-blue-50"
           >
             <Icon name="phone" class="h-5 w-5" />
-            Call Now
+            {t.labels.callNow}
           </a>
           <a
-            href="/contact"
+            href={getRoute(locale, 'contact')}
             class="inline-flex items-center justify-center gap-2 rounded-full bg-green-500 px-7 py-4 text-base font-black text-white shadow-xl shadow-green-950/20 transition hover:-translate-y-0.5 hover:bg-green-600"
           >
-            Free Estimate
+            {t.labels.freeEstimate}
             <Icon name="arrowRight" class="h-5 w-5" />
           </a>
         </div>
@@ -66,11 +82,7 @@ const {
     </div>
 
     <div class="mt-16 grid gap-3 sm:grid-cols-3 lg:max-w-3xl">
-      {[
-        ['Residential', 'Homes, condos, apartments'],
-        ['Commercial', 'Offices and shared spaces'],
-        ['Outdoor', 'Lawns, gardens, upkeep'],
-      ].map(([label, copy], index) => (
+      {heroCards.map(([label, copy], index) => (
         <div class={`reveal reveal-delay-${index + 1} rounded-lg border border-white/20 bg-white/10 p-4 backdrop-blur-md`}>
           <p class="text-sm font-black text-white">{label}</p>
           <p class="mt-1 text-sm leading-6 text-blue-50/80">{copy}</p>
