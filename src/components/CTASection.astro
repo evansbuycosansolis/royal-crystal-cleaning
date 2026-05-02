@@ -1,0 +1,19 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<section class="bg-blue-900 text-white py-16 px-4">
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="text-xl sm:text-2xl font-medium text-blue-100 mb-8 leading-relaxed">{text}</p>
+    <a
+      href="/contact"
+      class="inline-flex items-center gap-2 px-8 py-4 bg-green-600 text-white font-bold text-lg rounded-xl hover:bg-green-700 transition-colors shadow-lg"
+    >
+      <span>✉️</span> Get a Free Estimate
+    </a>
+  </div>
+</section>
