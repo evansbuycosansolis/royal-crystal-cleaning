@@ -1,0 +1,80 @@
+---
+const quickLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'All Services', href: '/services' },
+  { label: 'Cleaning', href: '/services/cleaning' },
+  { label: 'Maintenance', href: '/services/maintenance' },
+  { label: 'Lawn & Garden', href: '/services/lawn-garden' },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-blue-900 text-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-2xl">👑</span>
+          <span class="text-xl font-bold">Royal Crystal Cleaning</span>
+        </div>
+        <p class="text-blue-200 text-sm leading-relaxed">
+          Cleaning, maintenance, and lawn care you can trust.
+        </p>
+        <p class="text-blue-300 text-xs mt-3 italic">The King of Crystal Clear Cleaning</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-blue-300 mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          {quickLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-blue-200 hover:text-white text-sm transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-blue-300 mb-4">Contact Us</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2">
+            <span class="text-green-400 mt-0.5">📞</span>
+            <a href="tel:2637888063" class="text-blue-200 hover:text-white text-sm transition-colors">
+              263-788-8063
+            </a>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-400 mt-0.5">✉️</span>
+            <a href="mailto:info@royalcrystalcleaning.com" class="text-blue-200 hover:text-white text-sm transition-colors break-all">
+              info@royalcrystalcleaning.com
+            </a>
+          </li>
+        </ul>
+        <div class="mt-6">
+          <a
+            href="/contact"
+            class="inline-block px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-lg hover:bg-green-700 transition-colors"
+          >
+            Get a Free Estimate
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="border-t border-blue-800 mt-10 pt-6 text-center">
+      <p class="text-blue-300 text-sm">
+        &copy; {year} Royal Crystal Cleaning. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

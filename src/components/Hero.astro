@@ -1,0 +1,51 @@
+---
+interface Props {
+  headline: string;
+  subheadline: string;
+  text: string;
+  showButtons?: boolean;
+}
+
+const { headline, subheadline, text, showButtons = true } = Astro.props;
+---
+
+<section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-24 px-4 overflow-hidden">
+  <!-- Decorative background rings -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full border border-white/10"></div>
+    <div class="absolute -bottom-32 -left-16 w-[500px] h-[500px] rounded-full border border-white/10"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/5"></div>
+  </div>
+
+  <div class="relative max-w-4xl mx-auto text-center">
+    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6 text-blue-100 text-sm font-medium">
+      <span>👑</span>
+      <span>The King of Crystal Clear Cleaning</span>
+    </div>
+
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 leading-tight">
+      {headline}
+    </h1>
+
+    <p class="text-xl sm:text-2xl font-medium text-blue-100 mb-4">{subheadline}</p>
+
+    <p class="text-base sm:text-lg text-blue-200 max-w-2xl mx-auto mb-10 leading-relaxed">{text}</p>
+
+    {showButtons && (
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="tel:2637888063"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-blue-900 font-bold rounded-xl hover:bg-blue-50 transition-colors text-base shadow-lg"
+        >
+          <span>📞</span> Call Now
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition-colors text-base shadow-lg"
+        >
+          <span>✉️</span> Free Estimate
+        </a>
+      </div>
+    )}
+  </div>
+</section>

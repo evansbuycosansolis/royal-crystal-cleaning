@@ -1,0 +1,95 @@
+---
+import Layout from '../components/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const whyChooseUs = [
+  'Commitment to excellence in every job',
+  'Personalized solutions tailored to every client',
+  'Health, safety, and peace of mind focused',
+  'Eco-friendly and family-safe practices',
+  'Reliable, high-quality results you can trust',
+];
+---
+
+<Layout
+  title="About Us | Royal Crystal Cleaning"
+  description="Learn about Royal Crystal Cleaning's commitment to excellence in cleaning, maintenance, and lawn care services."
+>
+  <!-- Page Hero -->
+  <section class="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="text-5xl mb-4" aria-hidden="true">👑</div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-3">About Royal Crystal Cleaning</h1>
+      <p class="text-blue-200 text-xl font-medium">The King of Crystal Clear Cleaning</p>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-lg max-w-none text-gray-600">
+        <p class="text-lg leading-relaxed mb-6">
+          Royal Crystal Cleaning has built a strong reputation for exceptional residential, commercial,
+          specialized, and property maintenance services. We understand that a clean, well-maintained
+          property is more than just aesthetics — it's about comfort, health, and pride in your space.
+        </p>
+        <p class="text-lg leading-relaxed mb-6">
+          Our team is committed to service excellence, attention to detail, and personalized solutions.
+          Whether you need routine cleaning, a one-time deep clean, reliable property maintenance, or
+          a beautifully manicured lawn, we bring the same level of dedication and professionalism to
+          every job.
+        </p>
+        <p class="text-lg leading-relaxed">
+          We proudly serve residential homeowners, apartment tenants, property managers, and
+          commercial businesses — delivering results that exceed expectations every time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-20 px-4 bg-gray-100">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-3">Why Choose Us?</h2>
+        <p class="text-gray-600 max-w-xl mx-auto">
+          We go beyond basic cleaning to provide comprehensive, trustworthy property care.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {whyChooseUs.map((reason) => (
+          <div class="flex items-start gap-3 bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+            <span class="text-green-600 text-xl flex-shrink-0 mt-0.5" aria-hidden="true">✅</span>
+            <p class="text-gray-700 font-medium">{reason}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Values -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-extrabold text-blue-900 mb-6">Our Commitment to You</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="bg-blue-50 rounded-2xl p-6">
+          <div class="text-4xl mb-3" aria-hidden="true">🌟</div>
+          <h3 class="text-lg font-bold text-blue-900 mb-2">Excellence</h3>
+          <p class="text-gray-600 text-sm">We hold ourselves to the highest standards on every project, big or small.</p>
+        </div>
+        <div class="bg-green-50 rounded-2xl p-6">
+          <div class="text-4xl mb-3" aria-hidden="true">🤝</div>
+          <h3 class="text-lg font-bold text-blue-900 mb-2">Reliability</h3>
+          <p class="text-gray-600 text-sm">When we say we'll be there, we mean it. Count on us to show up and deliver.</p>
+        </div>
+        <div class="bg-blue-50 rounded-2xl p-6">
+          <div class="text-4xl mb-3" aria-hidden="true">💚</div>
+          <h3 class="text-lg font-bold text-blue-900 mb-2">Care</h3>
+          <p class="text-gray-600 text-sm">We treat every property as if it were our own, with care and respect.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection text="Ready to experience the Royal Crystal Cleaning difference? Get your free estimate today." />
+</Layout>

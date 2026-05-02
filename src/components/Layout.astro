@@ -1,0 +1,49 @@
+---
+import SEO from './SEO.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogTitle?: string;
+  ogDescription?: string;
+}
+
+const { title, description, ogTitle, ogDescription } = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Royal Crystal Cleaning',
+  telephone: '263-788-8063',
+  email: 'info@royalcrystalcleaning.com',
+  description:
+    'Residential and commercial cleaning, handyman maintenance, lawn care, and garden services.',
+  url: 'https://royalcrystalcleaning.com',
+  serviceType: ['Cleaning Services', 'Handyman Services', 'Lawn Care'],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <SEO
+      title={title}
+      description={description}
+      ogTitle={ogTitle}
+      ogDescription={ogDescription}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="bg-white text-gray-800 font-sans antialiased">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
