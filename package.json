@@ -6,12 +6,20 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "check": "astro check",
+    "verify": "npm run check && npm run build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "5.18.1",
-    "@astrojs/tailwind": "^5.1.4",
-    "tailwindcss": "^3.4.17"
+    "@astrojs/sitemap": "^3.7.2",
+    "astro": "^6.2.1",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.13",
+    "tailwindcss": "^3.4.19"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^6.0.3"
   }
 }

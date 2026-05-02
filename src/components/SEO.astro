@@ -1,10 +1,14 @@
 ---
+import { business } from '../data/site';
+
 interface Props {
   title: string;
   description: string;
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
+  path?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -12,23 +16,30 @@ const {
   description,
   ogTitle,
   ogDescription,
-  ogImage = 'https://royalcrystalcleaning.com/og-image.png',
+  ogImage = new URL('/og-image.png', business.url).toString(),
+  path,
+  noindex = false,
 } = Astro.props;
 
 const resolvedOgTitle = ogTitle ?? title;
 const resolvedOgDescription = ogDescription ?? description;
+const canonicalPath =
+  path ?? (Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, ''));
+const canonicalUrl = new URL(canonicalPath, business.url).toString();
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+<link rel="canonical" href={canonicalUrl} />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalUrl} />
 <meta property="og:title" content={resolvedOgTitle} />
 <meta property="og:description" content={resolvedOgDescription} />
 <meta property="og:image" content={ogImage} />
-<meta property="og:site_name" content="Royal Crystal Cleaning" />
+<meta property="og:site_name" content={business.name} />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />

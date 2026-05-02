@@ -1,132 +1,133 @@
 ---
-const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
-];
+import Icon from './Icon.astro';
+import { business, navLinks, services } from '../data/site';
 
-const serviceLinks = [
-  { label: 'Residential & Commercial Cleaning', href: '/services/cleaning' },
-  { label: 'Maintenance Services', href: '/services/maintenance' },
-  { label: 'Lawn & Garden Care', href: '/services/lawn-garden' },
-];
+const normalizePath = (path: string) => (path === '/' ? '/' : path.replace(/\/$/, ''));
+const currentPath = normalizePath(Astro.url.pathname);
 
-const currentPath = Astro.url.pathname;
+const isActive = (href: string) => {
+  const normalizedHref = normalizePath(href);
+  return normalizedHref === '/'
+    ? currentPath === '/'
+    : currentPath === normalizedHref || currentPath.startsWith(`${normalizedHref}/`);
+};
 ---
 
-<header class="sticky top-0 z-50 bg-white shadow-md">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <!-- Brand -->
-      <a href="/" class="flex items-center gap-2 text-blue-900 font-bold text-lg leading-tight">
-        <span class="text-2xl">👑</span>
-        <span class="hidden sm:block">Royal Crystal Cleaning</span>
-        <span class="block sm:hidden">Royal Crystal</span>
+<header class="sticky top-0 z-50 border-b border-white/70 bg-white/90 shadow-[0_10px_30px_rgba(15,23,42,0.08)] backdrop-blur-xl">
+  <input type="checkbox" id="mobile-menu-toggle" class="peer sr-only" aria-label="Toggle mobile menu" />
+
+  <div class="section-shell">
+    <div class="flex h-20 items-center justify-between gap-4">
+      <a href="/" class="flex min-w-0 items-center gap-3 text-blue-950" aria-label={`${business.name} home`}>
+        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-blue-950 text-lg font-black text-white shadow-lg shadow-blue-950/20">
+          R
+        </span>
+        <span class="min-w-0">
+          <span class="block truncate text-base font-black leading-5 sm:text-lg">{business.name}</span>
+          <span class="hidden text-xs font-semibold text-blue-700 sm:block">{business.tagline}</span>
+        </span>
       </a>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
+      <nav class="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
         {navLinks.map((link) => (
-          <a
-            href={link.href}
-            class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-              currentPath === link.href
-                ? 'text-blue-900 bg-blue-50'
-                : 'text-gray-700 hover:text-blue-900 hover:bg-blue-50'
-            }`}
-          >
-            {link.label}
-          </a>
-        ))}
-
-        <!-- Services Dropdown -->
-        <div class="relative group">
-          <button
-            class={`px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-1 ${
-              currentPath.startsWith('/services')
-                ? 'text-blue-900 bg-blue-50'
-                : 'text-gray-700 hover:text-blue-900 hover:bg-blue-50'
-            }`}
-          >
-            Services
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div class="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-            <a
-              href="/services"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 rounded-t-lg font-medium border-b border-gray-100"
-            >
-              All Services
-            </a>
-            {serviceLinks.map((link) => (
+          link.href === '/services' ? (
+            <div class="group relative">
               <a
                 href={link.href}
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900 last:rounded-b-lg"
+                class={`inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-bold transition ${
+                  isActive(link.href)
+                    ? 'bg-blue-50 text-blue-950'
+                    : 'text-slate-700 hover:bg-blue-50 hover:text-blue-950'
+                }`}
               >
                 {link.label}
+                <Icon name="arrowRight" class="h-4 w-4 rotate-90 transition group-hover:translate-y-0.5" />
               </a>
-            ))}
-          </div>
-        </div>
+              <div class="invisible absolute left-0 top-full z-50 mt-3 w-80 translate-y-2 rounded-lg border border-slate-200 bg-white p-2 opacity-0 shadow-2xl shadow-slate-950/10 transition duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                {services.map((service) => (
+                  <a
+                    href={service.href}
+                    class="flex gap-3 rounded-lg p-3 transition hover:bg-blue-50"
+                  >
+                    <span class="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-blue-950 text-white">
+                      <Icon name={service.icon} class="h-5 w-5" />
+                    </span>
+                    <span>
+                      <span class="block text-sm font-black text-blue-950">{service.navTitle}</span>
+                      <span class="mt-1 block text-xs leading-5 text-slate-600">{service.summary}</span>
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a
+              href={link.href}
+              class={`rounded-full px-4 py-2 text-sm font-bold transition ${
+                isActive(link.href)
+                  ? 'bg-blue-50 text-blue-950'
+                  : 'text-slate-700 hover:bg-blue-50 hover:text-blue-950'
+              }`}
+            >
+              {link.label}
+            </a>
+          )
+        ))}
       </nav>
 
-      <!-- CTA + Mobile toggle -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2">
         <a
-          href="/contact"
-          class="hidden sm:inline-flex items-center px-4 py-2 bg-blue-900 text-white text-sm font-semibold rounded-lg hover:bg-blue-800 transition-colors"
+          href={business.phoneHref}
+          class="hidden items-center gap-2 rounded-full bg-blue-950 px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-950/20 transition hover:-translate-y-0.5 hover:bg-blue-800 sm:inline-flex"
         >
-          Free Estimate
+          <Icon name="phone" class="h-4 w-4" />
+          Call {business.phone}
         </a>
 
-        <!-- Mobile menu button (CSS checkbox trick) -->
-        <label for="mobile-menu-toggle" class="md:hidden cursor-pointer p-2 text-gray-700 hover:text-blue-900" aria-label="Toggle mobile menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+        <label
+          for="mobile-menu-toggle"
+          class="grid h-11 w-11 cursor-pointer place-items-center rounded-lg border border-slate-200 bg-white text-blue-950 shadow-sm transition hover:bg-blue-50 lg:hidden"
+        >
+          <span class="sr-only">Open menu</span>
+          <Icon name="menu" class="h-6 w-6" />
         </label>
       </div>
     </div>
   </div>
 
-  <!-- Mobile menu (CSS-only toggle) -->
-  <input type="checkbox" id="mobile-menu-toggle" class="hidden peer" />
-  <div class="hidden peer-checked:block md:hidden bg-white border-t border-gray-100 shadow-lg">
-    <nav class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-1" aria-label="Mobile navigation">
+  <div class="hidden border-t border-slate-200 bg-white shadow-xl peer-checked:block lg:hidden">
+    <nav class="section-shell flex flex-col gap-2 py-4" aria-label="Mobile navigation">
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class={`block px-3 py-2 rounded-md text-sm font-medium ${
-            currentPath === link.href
-              ? 'text-blue-900 bg-blue-50'
-              : 'text-gray-700 hover:text-blue-900 hover:bg-blue-50'
+          class={`rounded-lg px-4 py-3 text-sm font-black transition ${
+            isActive(link.href)
+              ? 'bg-blue-50 text-blue-950'
+              : 'text-slate-700 hover:bg-blue-50 hover:text-blue-950'
           }`}
         >
           {link.label}
         </a>
       ))}
-      <div class="border-t border-gray-100 pt-2 mt-1">
-        <p class="px-3 py-1 text-xs font-semibold text-gray-400 uppercase tracking-wider">Services</p>
-        <a href="/services" class="block px-3 py-2 rounded-md text-sm text-gray-700 hover:text-blue-900 hover:bg-blue-50 font-medium">
-          All Services
-        </a>
-        {serviceLinks.map((link) => (
+      <div class="mt-2 border-t border-slate-200 pt-3">
+        <p class="px-4 py-2 text-xs font-black uppercase text-slate-500">Service specialties</p>
+        {services.map((service) => (
           <a
-            href={link.href}
-            class="block px-3 py-2 rounded-md text-sm text-gray-700 hover:text-blue-900 hover:bg-blue-50"
+            href={service.href}
+            class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-bold text-slate-700 transition hover:bg-blue-50 hover:text-blue-950"
           >
-            {link.label}
+            <Icon name={service.icon} class="h-4 w-4 text-green-600" />
+            {service.navTitle}
           </a>
         ))}
       </div>
-      <div class="border-t border-gray-100 pt-2 mt-1">
+      <div class="mt-2 border-t border-slate-200 pt-4">
         <a
-          href="/contact"
-          class="block w-full text-center px-4 py-2 bg-blue-900 text-white text-sm font-semibold rounded-lg hover:bg-blue-800 transition-colors"
+          href={business.phoneHref}
+          class="flex w-full items-center justify-center gap-2 rounded-full bg-blue-950 px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-950/20 transition hover:bg-blue-800"
         >
-          Free Estimate
+          <Icon name="phone" class="h-4 w-4" />
+          Call {business.phone}
         </a>
       </div>
     </nav>

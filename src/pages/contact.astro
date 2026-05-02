@@ -1,162 +1,122 @@
 ---
 import Layout from '../components/Layout.astro';
+import Icon from '../components/Icon.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import { business, contactCards, services } from '../data/site';
 ---
 
 <Layout
   title="Contact Us | Royal Crystal Cleaning"
   description="Contact Royal Crystal Cleaning for a free estimate on cleaning, maintenance, or lawn care services."
 >
-  <!-- Page Hero -->
-  <section class="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16 px-4">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="text-5xl mb-4" aria-hidden="true">✉️</div>
-      <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">Get a Free Estimate</h1>
-      <p class="text-blue-200 text-lg max-w-xl mx-auto">
-        We respond within 24 hours. Reach out and let us know how we can help.
-      </p>
+  <PageHero
+    title="Get a Free Estimate"
+    text="Reach out by phone or email and let us know how Royal Crystal Cleaning can help with your property."
+    image="/images/hero-cleaning.webp"
+    icon="mail"
+  />
+
+  <section class="bg-white py-20 sm:py-24">
+    <div class="section-shell">
+      <SectionIntro
+        eyebrow="Contact"
+        title="Call or email for a clear, friendly next step"
+        text="No booking portal or complicated form. Just direct contact for a free estimate."
+      />
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-3">
+        {contactCards.map((card) => (
+          <a href={card.href} class="premium-card reveal group p-6">
+            <div class="mb-5 grid h-12 w-12 place-items-center rounded-lg bg-blue-50 text-blue-800">
+              <Icon name={card.icon} class="h-6 w-6" />
+            </div>
+            <h2 class="text-xl font-black text-blue-950">{card.title}</h2>
+            <p class="mt-3 break-words text-sm font-semibold leading-7 text-slate-600">{card.text}</p>
+            <p class="mt-5 inline-flex items-center gap-2 text-sm font-black text-green-700 transition group-hover:gap-3">
+              Contact
+              <Icon name="arrowRight" class="h-4 w-4" />
+            </p>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
-  <!-- Contact Content -->
-  <section class="py-20 px-4 bg-gray-100">
-    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
-
-      <!-- Contact Info -->
-      <div>
-        <h2 class="text-2xl font-extrabold text-blue-900 mb-6">Contact Information</h2>
-
-        <div class="space-y-5 mb-8">
-          <div class="flex items-start gap-4 bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-            <span class="text-3xl flex-shrink-0" aria-hidden="true">📞</span>
-            <div>
-              <p class="text-sm text-gray-500 font-medium mb-1">Phone</p>
-              <a href="tel:2637888063" class="text-xl font-bold text-blue-900 hover:text-blue-700 transition-colors">
-                263-788-8063
-              </a>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4 bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-            <span class="text-3xl flex-shrink-0" aria-hidden="true">✉️</span>
-            <div>
-              <p class="text-sm text-gray-500 font-medium mb-1">Email</p>
-              <a href="mailto:info@royalcrystalcleaning.com" class="text-lg font-bold text-blue-900 hover:text-blue-700 transition-colors break-all">
-                info@royalcrystalcleaning.com
-              </a>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4 bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-            <span class="text-3xl flex-shrink-0" aria-hidden="true">⏱️</span>
-            <div>
-              <p class="text-sm text-gray-500 font-medium mb-1">Response Time</p>
-              <p class="text-gray-700 font-semibold">We respond within 24 hours</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-blue-900 rounded-2xl p-6 text-white">
-          <div class="text-2xl mb-2" aria-hidden="true">👑</div>
-          <h3 class="font-bold text-lg mb-1">Royal Crystal Cleaning</h3>
-          <p class="text-blue-200 text-sm">The King of Crystal Clear Cleaning</p>
-          <p class="text-blue-200 text-sm mt-2">Cleaning, maintenance, and lawn care you can trust.</p>
-        </div>
+  <section class="bg-slate-50 py-20 sm:py-24">
+    <div class="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <div class="reveal image-zoom aspect-[4/5] shadow-2xl shadow-slate-950/10">
+        <img src="/images/commercial-cleaning.webp" alt="Professional cleaners wiping glass and a reception counter in a modern office" width="900" height="1125" loading="lazy" />
       </div>
 
-      <!-- Contact Form -->
-      <div>
-        <h2 class="text-2xl font-extrabold text-blue-900 mb-6">Send Us a Message</h2>
-        <form
-          action="mailto:info@royalcrystalcleaning.com"
-          method="POST"
-          enctype="text/plain"
-          class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 space-y-5"
-        >
-          <div>
-            <label for="name" class="block text-sm font-semibold text-gray-700 mb-1.5">
-              Full Name <span class="text-red-500" aria-hidden="true">*</span>
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              placeholder="Your full name"
-              class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent text-gray-800 placeholder-gray-400"
-            />
-          </div>
+      <div class="reveal reveal-delay-1">
+        <p class="mb-3 text-sm font-black uppercase text-green-700">Free estimate details</p>
+        <h2 class="text-3xl font-black leading-tight text-blue-950 sm:text-4xl">
+          Helpful details to include when you reach out
+        </h2>
+        <div class="mt-8 grid gap-4">
+          {[
+            'Property type: home, condo, apartment, office, business, or outdoor space',
+            'Service needed: cleaning, maintenance, lawn and garden care, or multiple services',
+            'Timing: one-time help, regular service, move-in/move-out, seasonal cleanup, or urgent support',
+            'Contact preference: phone call or email reply',
+          ].map((item) => (
+            <div class="flex gap-4 rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+              <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-green-100 text-green-700">
+                <Icon name="check" class="h-4 w-4" />
+              </span>
+              <p class="text-sm font-bold leading-7 text-slate-700">{item}</p>
+            </div>
+          ))}
+        </div>
 
-          <div>
-            <label for="email" class="block text-sm font-semibold text-gray-700 mb-1.5">
-              Email Address <span class="text-red-500" aria-hidden="true">*</span>
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              placeholder="your@email.com"
-              class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent text-gray-800 placeholder-gray-400"
-            />
-          </div>
-
-          <div>
-            <label for="phone" class="block text-sm font-semibold text-gray-700 mb-1.5">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="Your phone number"
-              class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent text-gray-800 placeholder-gray-400"
-            />
-          </div>
-
-          <div>
-            <label for="service" class="block text-sm font-semibold text-gray-700 mb-1.5">
-              Service Interested In
-            </label>
-            <select
-              id="service"
-              name="service"
-              class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent text-gray-800 bg-white"
+        <div class="mt-8 rounded-lg bg-blue-950 p-6 text-white">
+          <p class="text-lg font-black">{business.name}</p>
+          <p class="mt-2 text-sm leading-7 text-blue-100">{business.catchphrase}</p>
+          <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+            <a
+              href={business.phoneHref}
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-black text-blue-950 transition hover:bg-blue-50"
             >
-              <option value="">Select a service...</option>
-              <option value="cleaning">Residential &amp; Commercial Cleaning</option>
-              <option value="maintenance">Handyman &amp; Property Maintenance</option>
-              <option value="lawn-garden">Lawn &amp; Garden Care</option>
-              <option value="multiple">Multiple Services</option>
-              <option value="other">Other / Not Sure</option>
-            </select>
+              <Icon name="phone" class="h-4 w-4" />
+              {business.phone}
+            </a>
+            <a
+              href={business.emailHref}
+              class="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-black text-white transition hover:bg-white/10"
+            >
+              <Icon name="mail" class="h-4 w-4" />
+              Email Us
+            </a>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div>
-            <label for="message" class="block text-sm font-semibold text-gray-700 mb-1.5">
-              Message <span class="text-red-500" aria-hidden="true">*</span>
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              required
-              rows="4"
-              placeholder="Tell us about your needs..."
-              class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent text-gray-800 placeholder-gray-400 resize-none"
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            class="w-full py-3.5 bg-blue-900 text-white font-bold rounded-xl hover:bg-blue-800 transition-colors text-base"
-          >
-            Send Message
-          </button>
-
-          <p class="text-xs text-gray-500 text-center">
-            We respond within 24 hours. You can also reach us directly at&nbsp;
-            <a href="tel:2637888063" class="text-blue-900 hover:underline font-medium">263-788-8063</a>.
-          </p>
-        </form>
+  <section class="bg-white py-20 sm:py-24">
+    <div class="section-shell">
+      <SectionIntro
+        eyebrow="Service options"
+        title="What can we help with?"
+        text="Tell us which area sounds closest to what you need. We can help narrow it down."
+      />
+      <div class="mt-12 grid gap-5 md:grid-cols-3">
+        {services.map((service) => (
+          <a href={service.href} class="premium-card reveal group overflow-hidden">
+            <div class="image-zoom aspect-[4/3]">
+              <img src={service.image} alt={service.imageAlt} width="700" height="525" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-black text-blue-950">{service.title}</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600">{service.summary}</p>
+              <p class="mt-4 inline-flex items-center gap-2 text-sm font-black text-green-700 transition group-hover:gap-3">
+                View Service
+                <Icon name="arrowRight" class="h-4 w-4" />
+              </p>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>

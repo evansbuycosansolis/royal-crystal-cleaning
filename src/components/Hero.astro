@@ -1,51 +1,81 @@
 ---
+import Icon from './Icon.astro';
+import { business } from '../data/site';
+
 interface Props {
   headline: string;
   subheadline: string;
   text: string;
   showButtons?: boolean;
+  image?: string;
 }
 
-const { headline, subheadline, text, showButtons = true } = Astro.props;
+const {
+  headline,
+  subheadline,
+  text,
+  showButtons = true,
+  image = '/images/hero-cleaning.webp',
+} = Astro.props;
 ---
 
-<section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-24 px-4 overflow-hidden">
-  <!-- Decorative background rings -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full border border-white/10"></div>
-    <div class="absolute -bottom-32 -left-16 w-[500px] h-[500px] rounded-full border border-white/10"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/5"></div>
+<section class="relative min-h-[calc(100svh-7rem)] overflow-hidden bg-blue-950 text-white">
+  <div
+    class="absolute inset-0 bg-cover bg-center"
+    style={`background-image: linear-gradient(90deg, rgba(9, 24, 61, 0.92) 0%, rgba(15, 47, 118, 0.82) 43%, rgba(15, 47, 118, 0.44) 72%, rgba(15, 47, 118, 0.32) 100%), url('${image}');`}
+    aria-hidden="true"
+  >
   </div>
+  <div class="absolute inset-0 soft-grid opacity-25" aria-hidden="true"></div>
+  <div class="absolute right-[8%] top-24 hidden h-36 w-36 rounded-full border border-white/25 lg:block" style="animation: float-gently 6s ease-in-out infinite;" aria-hidden="true"></div>
+  <div class="absolute bottom-24 right-[18%] hidden h-24 w-24 rounded-full bg-green-400/20 blur-sm lg:block" style="animation: float-gently 7s ease-in-out infinite;" aria-hidden="true"></div>
 
-  <div class="relative max-w-4xl mx-auto text-center">
-    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6 text-blue-100 text-sm font-medium">
-      <span>👑</span>
-      <span>The King of Crystal Clear Cleaning</span>
+  <div class="section-shell relative py-20 sm:py-24 lg:py-28">
+    <div class="max-w-3xl reveal">
+      <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold text-blue-50 shadow-xl shadow-blue-950/20 backdrop-blur-md">
+        <Icon name="sparkles" class="h-4 w-4 text-green-300" />
+        {business.tagline}
+      </div>
+
+      <h1 class="max-w-3xl text-5xl font-black leading-[1.04] text-white sm:text-6xl lg:text-7xl">
+        {headline}
+      </h1>
+
+      <p class="mt-6 max-w-2xl text-2xl font-bold leading-9 text-blue-100 sm:text-3xl">{subheadline}</p>
+
+      <p class="mt-5 max-w-2xl text-base leading-8 text-blue-50/90 sm:text-lg">{text}</p>
+
+      {showButtons && (
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+          <a
+            href={business.phoneHref}
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-base font-black text-blue-950 shadow-xl shadow-blue-950/25 transition hover:-translate-y-0.5 hover:bg-blue-50"
+          >
+            <Icon name="phone" class="h-5 w-5" />
+            Call Now
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-green-500 px-7 py-4 text-base font-black text-white shadow-xl shadow-green-950/20 transition hover:-translate-y-0.5 hover:bg-green-600"
+          >
+            Free Estimate
+            <Icon name="arrowRight" class="h-5 w-5" />
+          </a>
+        </div>
+      )}
     </div>
 
-    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 leading-tight">
-      {headline}
-    </h1>
-
-    <p class="text-xl sm:text-2xl font-medium text-blue-100 mb-4">{subheadline}</p>
-
-    <p class="text-base sm:text-lg text-blue-200 max-w-2xl mx-auto mb-10 leading-relaxed">{text}</p>
-
-    {showButtons && (
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="tel:2637888063"
-          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-blue-900 font-bold rounded-xl hover:bg-blue-50 transition-colors text-base shadow-lg"
-        >
-          <span>📞</span> Call Now
-        </a>
-        <a
-          href="/contact"
-          class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition-colors text-base shadow-lg"
-        >
-          <span>✉️</span> Free Estimate
-        </a>
-      </div>
-    )}
+    <div class="mt-16 grid gap-3 sm:grid-cols-3 lg:max-w-3xl">
+      {[
+        ['Residential', 'Homes, condos, apartments'],
+        ['Commercial', 'Offices and shared spaces'],
+        ['Outdoor', 'Lawns, gardens, upkeep'],
+      ].map(([label, copy], index) => (
+        <div class={`reveal reveal-delay-${index + 1} rounded-lg border border-white/20 bg-white/10 p-4 backdrop-blur-md`}>
+          <p class="text-sm font-black text-white">{label}</p>
+          <p class="mt-1 text-sm leading-6 text-blue-50/80">{copy}</p>
+        </div>
+      ))}
+    </div>
   </div>
 </section>

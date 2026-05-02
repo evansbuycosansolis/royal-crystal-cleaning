@@ -1,27 +1,40 @@
 ---
+import '../styles/global.css';
 import SEO from './SEO.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
+import { business, services } from '../data/site';
 
 interface Props {
   title: string;
   description: string;
   ogTitle?: string;
   ogDescription?: string;
+  ogImage?: string;
+  path?: string;
 }
 
-const { title, description, ogTitle, ogDescription } = Astro.props;
+const { title, description, ogTitle, ogDescription, ogImage, path } = Astro.props;
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'Royal Crystal Cleaning',
-  telephone: '263-788-8063',
-  email: 'info@royalcrystalcleaning.com',
-  description:
-    'Residential and commercial cleaning, handyman maintenance, lawn care, and garden services.',
-  url: 'https://royalcrystalcleaning.com',
-  serviceType: ['Cleaning Services', 'Handyman Services', 'Lawn Care'],
+  '@id': `${business.url}/#business`,
+  name: business.name,
+  slogan: business.tagline,
+  telephone: business.phone,
+  email: business.email,
+  description: business.description,
+  url: business.url,
+  image: new URL('/og-image.png', business.url).toString(),
+  priceRange: '$$',
+  serviceType: services.map((service) => service.title),
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: business.phone,
+    email: business.email,
+    contactType: 'customer service',
+  },
 };
 ---
 
@@ -30,20 +43,54 @@ const jsonLd = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f2f76" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
     <SEO
       title={title}
       description={description}
       ogTitle={ogTitle}
       ogDescription={ogDescription}
+      ogImage={ogImage}
+      path={path}
     />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
   </head>
-  <body class="bg-white text-gray-800 font-sans antialiased">
+  <body class="bg-white font-sans text-slate-800 antialiased">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:text-sm focus:font-bold focus:text-blue-900 focus:shadow-xl"
+    >
+      Skip to content
+    </a>
     <Header />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />
+    <script is:inline>
+      const revealItems = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.14 }
+        );
+
+        revealItems.forEach((item) => observer.observe(item));
+      } else {
+        revealItems.forEach((item) => item.classList.add('is-visible'));
+      }
+    </script>
   </body>
 </html>

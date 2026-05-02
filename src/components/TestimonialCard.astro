@@ -1,0 +1,24 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  quote: string;
+  name: string;
+  label: string;
+}
+
+const { quote, name, label } = Astro.props;
+---
+
+<article class="premium-card reveal h-full p-6">
+  <div class="mb-5 flex gap-1 text-green-600" aria-label="Five star review">
+    {Array.from({ length: 5 }).map(() => <Icon name="star" class="h-4 w-4 fill-current" />)}
+  </div>
+  <blockquote class="text-base font-semibold leading-8 text-slate-700">
+    "{quote}"
+  </blockquote>
+  <div class="mt-6 border-t border-slate-200 pt-5">
+    <p class="font-black text-blue-950">{name}</p>
+    <p class="mt-1 text-sm font-semibold text-slate-500">{label}</p>
+  </div>
+</article>

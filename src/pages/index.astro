@@ -3,108 +3,152 @@ import Layout from '../components/Layout.astro';
 import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import CTASection from '../components/CTASection.astro';
-
-const services = [
-  {
-    title: 'Residential & Commercial Cleaning',
-    description: 'Crystal-clear cleaning for homes, apartments, condos, offices, and commercial properties.',
-    icon: '🏠',
-    href: '/services/cleaning',
-  },
-  {
-    title: 'Handyman & Property Maintenance',
-    description: 'Reliable repairs, installations, and upkeep for residential and commercial properties.',
-    icon: '🔧',
-    href: '/services/maintenance',
-  },
-  {
-    title: 'Lawn & Garden Care',
-    description: 'Beautiful lawns, gardens, and outdoor spaces tailored to your property.',
-    icon: '🌿',
-    href: '/services/lawn-garden',
-  },
-];
-
-const whyChooseUs = [
-  'Commitment to excellence',
-  'Personalized solutions for every client',
-  'Health, safety, and peace of mind focused',
-  'Eco-friendly and family-safe practices',
-  'Reliable, high-quality results you can trust',
-];
+import Icon from '../components/Icon.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import { business, gallery, services, testimonials, whyChooseUs } from '../data/site';
 ---
 
 <Layout
   title="Royal Crystal Cleaning | Professional Cleaning, Maintenance & Lawn Care"
   description="Royal Crystal Cleaning offers professional residential and commercial cleaning, handyman maintenance, and lawn care services. The King of Crystal Clear Cleaning."
 >
-  <!-- Hero -->
   <Hero
-    headline="Royal Crystal Cleaning"
-    subheadline="Cleaning, maintenance, and lawn care you can trust."
+    headline={business.name}
+    subheadline={business.catchphrase}
     text="From crystal-clear indoor cleaning to beautiful outdoor spaces, we help keep your home, property, and business fresh, clean, healthy, and well maintained."
     showButtons={true}
   />
 
-  <!-- Services -->
-  <section class="py-20 px-4 bg-gray-100">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-3">Our Services</h2>
-        <p class="text-gray-600 max-w-xl mx-auto">
-          Comprehensive property care solutions for homes and businesses.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <section class="bg-white py-20 sm:py-24">
+    <div class="section-shell">
+      <SectionIntro
+        eyebrow="Property care services"
+        title="A polished property, inside and out"
+        text="Choose focused cleaning, reliable maintenance, lawn and garden care, or a custom mix that keeps your property fresh and welcoming."
+      />
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
         {services.map((service) => (
           <ServiceCard
             title={service.title}
-            description={service.description}
+            description={service.summary}
             icon={service.icon}
             href={service.href}
+            image={service.image}
+            imageAlt={service.imageAlt}
+            accent={service.accent}
           />
         ))}
       </div>
-      <div class="text-center mt-10">
-        <a href="/services" class="inline-flex items-center gap-2 px-6 py-3 border-2 border-blue-900 text-blue-900 font-semibold rounded-xl hover:bg-blue-900 hover:text-white transition-colors">
+      <div class="reveal mt-12 text-center">
+        <a
+          href="/services"
+          class="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-7 py-4 text-base font-black text-blue-950 shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-50"
+        >
           View All Services
+          <Icon name="arrowRight" class="h-5 w-5" />
         </a>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section class="py-20 px-4 bg-white">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-4">About Royal Crystal Cleaning</h2>
-      <p class="text-gray-600 text-lg leading-relaxed">
-        Royal Crystal Cleaning has built a strong reputation for exceptional residential, commercial,
-        specialized, and property maintenance services. Our team is committed to service excellence,
-        attention to detail, and personalized solutions.
-      </p>
-      <a href="/about" class="inline-flex items-center gap-2 mt-8 px-6 py-3 border-2 border-blue-900 text-blue-900 font-semibold rounded-xl hover:bg-blue-900 hover:text-white transition-colors">
-        Learn More About Us
-      </a>
+  <section class="relative overflow-hidden bg-slate-50 py-20 sm:py-24">
+    <div class="absolute inset-0 soft-grid opacity-60" aria-hidden="true"></div>
+    <div class="section-shell relative grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div class="reveal image-zoom aspect-[4/5] shadow-2xl shadow-slate-950/10">
+        <img src="/images/about-team.webp" alt="Royal Crystal Cleaning team greeting a customer at a clean modern property" width="900" height="1125" loading="lazy" />
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p class="mb-3 text-sm font-black uppercase text-green-700">About Royal Crystal Cleaning</p>
+        <h2 class="text-3xl font-black leading-tight text-blue-950 sm:text-4xl lg:text-5xl">
+          Premium local service with practical care and a personal touch.
+        </h2>
+        <p class="mt-5 text-lg leading-8 text-slate-600">
+          Royal Crystal Cleaning has built a strong reputation for exceptional residential,
+          commercial, specialized, and property maintenance services. Our team is committed to
+          service excellence, attention to detail, and personalized solutions.
+        </p>
+        <p class="mt-5 text-lg leading-8 text-slate-600">
+          We understand that a clean and beautiful environment is not only about appearance, it is
+          also about comfort, health, safety, and peace of mind.
+        </p>
+        <div class="mt-8 grid gap-3 sm:grid-cols-2">
+          {['Fresh indoor spaces', 'Dependable upkeep', 'Beautiful outdoor areas', 'Clear communication'].map((item) => (
+            <div class="flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+              <Icon name="checkCircle" class="h-5 w-5 text-green-600" />
+              <p class="text-sm font-black text-blue-950">{item}</p>
+            </div>
+          ))}
+        </div>
+        <a
+          href="/about"
+          class="mt-8 inline-flex items-center gap-2 rounded-full bg-blue-950 px-7 py-4 text-base font-black text-white shadow-xl shadow-blue-950/20 transition hover:-translate-y-0.5 hover:bg-blue-800"
+        >
+          Learn More About Us
+          <Icon name="arrowRight" class="h-5 w-5" />
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Why Choose Us -->
-  <section class="py-20 px-4 bg-gray-100">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-3">Why Choose Royal Crystal Cleaning?</h2>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {whyChooseUs.map((reason) => (
-          <div class="flex items-start gap-3 bg-white rounded-xl p-4 shadow-sm">
-            <span class="text-green-600 text-xl flex-shrink-0 mt-0.5" aria-hidden="true">✅</span>
-            <p class="text-gray-700 font-medium">{reason}</p>
-          </div>
+  <section class="bg-white py-20 sm:py-24">
+    <div class="section-shell">
+      <SectionIntro
+        eyebrow="Why choose us"
+        title="Trustworthy service that is easy to see and easy to feel"
+        text="The work is practical, but the experience should still feel polished, organized, and reassuring."
+      />
+      <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+        {whyChooseUs.map((item) => (
+          <article class="premium-card reveal p-5">
+            <div class="mb-5 grid h-12 w-12 place-items-center rounded-lg bg-blue-50 text-blue-800">
+              <Icon name={item.icon} class="h-6 w-6" />
+            </div>
+            <h3 class="text-lg font-black leading-7 text-blue-950">{item.title}</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600">{item.text}</p>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <CTASection text="Ready for a cleaner, safer, and better-maintained property? Contact Royal Crystal Cleaning today for a free estimate." />
+  <section class="bg-slate-50 py-20 sm:py-24">
+    <div class="section-shell">
+      <SectionIntro
+        eyebrow="Visual showcase"
+        title="Spaces that feel cared for from the first glance"
+        text="A quick look at the clean, welcoming, property-focused feel Royal Crystal Cleaning brings to every service."
+      />
+      <div class="mt-12 grid gap-5 lg:grid-cols-3">
+        {gallery.map((item, index) => (
+          <article class={`reveal premium-card overflow-hidden ${index === 0 ? 'lg:row-span-2' : ''}`}>
+            <div class={`image-zoom ${index === 0 ? 'aspect-[4/5]' : 'aspect-[4/3]'}`}>
+              <img src={item.src} alt={item.alt} width="900" height="675" loading="lazy" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-black text-blue-950">{item.title}</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600">{item.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 sm:py-24">
+    <div class="section-shell">
+      <SectionIntro
+        eyebrow="Customer words"
+        title="Friendly, reliable, detail-focused service"
+        text="Sample reviews that reflect the trust, clarity, and care this site is designed to communicate."
+      />
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {testimonials.map((testimonial) => (
+          <TestimonialCard quote={testimonial.quote} name={testimonial.name} label={testimonial.label} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection text="Contact Royal Crystal Cleaning today for a free estimate." />
 </Layout>
