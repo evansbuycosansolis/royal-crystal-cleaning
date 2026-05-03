@@ -9,6 +9,8 @@ export const businessContact = {
   email: 'info@royalcrystalcleaning.com',
   emailHref: 'mailto:info@royalcrystalcleaning.com',
   url: 'https://royalcrystalcleaning.com',
+  logoPng: '/royal-crystal-cleaning-logo.png',
+  logoJpg: '/royal-crystal-cleaning-logo.jpg',
 };
 
 export const routes = {
