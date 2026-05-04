@@ -444,7 +444,7 @@ export const content = {
     languageName: 'Français',
     htmlLang: 'fr-CA',
     business: {
-      name: 'Royal Crystal Cleaning',
+      name: 'Nettoyage Cristal Royal',
       tagline: 'Nettoyage et entretien par une seule équipe de confiance.',
       catchphrase: 'Nettoyage, entretien et pelouse en toute confiance.',
       description:
@@ -484,9 +484,9 @@ export const content = {
     },
     pages: {
       home: {
-        title: 'Royal Crystal Cleaning | Nettoyage, maintenance et entretien de pelouse',
+        title: 'Nettoyage Cristal Royal | Nettoyage, maintenance et entretien de pelouse',
         description:
-          'Royal Crystal Cleaning offre des services de nettoyage résidentiel et commercial, de maintenance, homme à tout faire, pelouse et jardin.',
+          'Nettoyage Cristal Royal offre des services de nettoyage résidentiel et commercial, de maintenance, homme à tout faire, pelouse et jardin.',
         heroText:
           'Des intérieurs éclatants aux espaces extérieurs bien entretenus, nous aidons à garder votre maison, votre propriété et votre entreprise propres, saines et accueillantes.',
         servicesEyebrow: 'Services de propriété',
@@ -494,10 +494,10 @@ export const content = {
         servicesText:
           'Choisissez un nettoyage soigné, une maintenance fiable, l’entretien de pelouse et jardin, ou une combinaison adaptée à votre propriété.',
         viewAllServices: 'Voir tous les services',
-        aboutEyebrow: 'À propos de Royal Crystal Cleaning',
+        aboutEyebrow: 'À propos de Nettoyage Cristal Royal',
         aboutTitle: 'Un service local haut de gamme, pratique et attentionné.',
         aboutParagraphs: [
-          'Royal Crystal Cleaning s’est bâti une solide réputation grâce à ses services résidentiels, commerciaux, spécialisés et d’entretien de propriété. Notre équipe s’engage à offrir un service de qualité, une attention aux détails et des solutions personnalisées adaptées aux besoins de chaque client.',
+          'Nettoyage Cristal Royal s’est bâti une solide réputation grâce à ses services résidentiels, commerciaux, spécialisés et d’entretien de propriété. Notre équipe s’engage à offrir un service de qualité, une attention aux détails et des solutions personnalisées adaptées aux besoins de chaque client.',
           'Nous comprenons qu’un environnement propre et bien entretenu n’est pas seulement une question d’apparence. C’est aussi une question de confort, de santé, de sécurité et de tranquillité d’esprit.',
         ],
         aboutHighlights: [
@@ -514,7 +514,7 @@ export const content = {
         galleryEyebrow: 'Aperçu visuel',
         galleryTitle: 'Des espaces soignés dès le premier regard',
         galleryText:
-          'Un aperçu de l’ambiance propre, accueillante et professionnelle que Royal Crystal Cleaning apporte à chaque service.',
+          'Un aperçu de l’ambiance propre, accueillante et professionnelle que Nettoyage Cristal Royal apporte à chaque service.',
         testimonialsEyebrow: 'Témoignages',
         testimonialsTitle: 'Un service amical, fiable et attentif aux détails',
         testimonialsText:
@@ -523,12 +523,12 @@ export const content = {
         ctaText: 'Demandez votre estimation gratuite dès aujourd’hui.',
       },
       services: {
-        title: 'Nos services | Royal Crystal Cleaning',
+        title: 'Nos services | Nettoyage Cristal Royal',
         description:
-          'Découvrez les services de Royal Crystal Cleaning : nettoyage résidentiel et commercial, maintenance, pelouse et jardin.',
+          'Découvrez les services de Nettoyage Cristal Royal : nettoyage résidentiel et commercial, maintenance, pelouse et jardin.',
         heroTitle: 'Nos services',
         heroText:
-          'Des intérieurs impeccables aux pelouses bien entretenues, Royal Crystal Cleaning offre des solutions complètes pour maisons et entreprises.',
+          'Des intérieurs impeccables aux pelouses bien entretenues, Nettoyage Cristal Royal offre des solutions complètes pour maisons et entreprises.',
         introEyebrow: 'Entretien complet de propriété',
         introTitle: 'Choisissez le service qui convient à votre espace',
         introText:
@@ -543,19 +543,19 @@ export const content = {
         ctaText: 'Vous ne savez pas quel service choisir? Contactez-nous et nous vous aiderons à trouver la bonne solution.',
       },
       about: {
-        title: 'À propos | Royal Crystal Cleaning',
+        title: 'À propos | Nettoyage Cristal Royal',
         description:
-          'Découvrez l’engagement de Royal Crystal Cleaning envers la qualité, le nettoyage, la maintenance et l’entretien de pelouse.',
-        heroTitle: 'À propos de Royal Crystal Cleaning',
+          'Découvrez l’engagement de Nettoyage Cristal Royal envers la qualité, le nettoyage, la maintenance et l’entretien de pelouse.',
+        heroTitle: 'À propos de Nettoyage Cristal Royal',
         heroText:
           'Une entreprise d’entretien de propriété axée sur la fiabilité, les détails soignés et la tranquillité d’esprit.',
         introTitle: 'Des espaces propres, beaux et bien entretenus changent la façon dont on se sent.',
         paragraphs: [
-          'Royal Crystal Cleaning s’est bâti une solide réputation grâce à ses services résidentiels, commerciaux, spécialisés et d’entretien de propriété.',
+          'Nettoyage Cristal Royal s’est bâti une solide réputation grâce à ses services résidentiels, commerciaux, spécialisés et d’entretien de propriété.',
           'Notre équipe s’engage à offrir un service de qualité, une attention aux détails et des solutions personnalisées adaptées aux besoins de chaque client.',
           'Nous comprenons qu’un environnement propre et bien entretenu n’est pas seulement une question d’apparence. C’est aussi une question de confort, de santé, de sécurité et de tranquillité d’esprit.',
         ],
-        imageAlt: 'Équipe de Royal Crystal Cleaning accueillant une cliente dans une propriété moderne et propre',
+        imageAlt: 'Équipe de Nettoyage Cristal Royal accueillant une cliente dans une propriété moderne et propre',
         whyEyebrow: 'Pourquoi les clients nous font confiance',
         whyTitle: 'Un service fondé sur le soin, la clarté et la constance',
         whyText:
@@ -570,12 +570,12 @@ export const content = {
         ctaText: 'Demandez votre estimation gratuite dès aujourd’hui.',
       },
       contact: {
-        title: 'Contact | Royal Crystal Cleaning',
+        title: 'Contact | Nettoyage Cristal Royal',
         description:
-          'Contactez Royal Crystal Cleaning pour une estimation gratuite en nettoyage, maintenance, pelouse ou jardin.',
+          'Contactez Nettoyage Cristal Royal pour une estimation gratuite en nettoyage, maintenance, pelouse ou jardin.',
         heroTitle: 'Demandez une estimation gratuite',
         heroText:
-          'Appelez-nous ou écrivez-nous pour nous dire comment Royal Crystal Cleaning peut vous aider avec votre propriété.',
+          'Appelez-nous ou écrivez-nous pour nous dire comment Nettoyage Cristal Royal peut vous aider avec votre propriété.',
         introEyebrow: 'Contact',
         introTitle: 'Appelez ou écrivez pour une prochaine étape claire et simple',
         introText: 'Aucun portail compliqué. Contact direct pour une estimation gratuite.',
@@ -602,7 +602,7 @@ export const content = {
       relatedEyebrow: 'Autres façons de vous aider',
       relatedTitle: 'Un entretien complet par une seule équipe de confiance',
       relatedText:
-        'Royal Crystal Cleaning peut soutenir l’intérieur, l’extérieur et l’entretien régulier de votre propriété.',
+        'Nettoyage Cristal Royal peut soutenir l’intérieur, l’extérieur et l’entretien régulier de votre propriété.',
       ctaText: 'Demandez votre estimation gratuite dès aujourd’hui.',
       includedEyebrow: 'Services inclus',
     },
@@ -621,7 +621,7 @@ export const content = {
           'Nettoyage fiable pour maisons, appartements, condos, bureaux, commerces et propriétés commerciales.',
         description:
           'Nous offrons des services de nettoyage fiables pour les maisons, appartements, condos, bureaux, commerces et propriétés commerciales. Que vous ayez besoin d’un entretien régulier, d’un grand ménage, d’un nettoyage avant ou après déménagement, d’un nettoyage après événement ou d’un nettoyage après rénovation, notre équipe aide à garder votre espace frais, organisé et professionnel.',
-        metaTitle: 'Nettoyage résidentiel et commercial | Royal Crystal Cleaning',
+        metaTitle: 'Nettoyage résidentiel et commercial | Nettoyage Cristal Royal',
         metaDescription:
           'Services de nettoyage pour maisons, appartements, condos, bureaux, commerces, cuisines, salles de bain, planchers, fenêtres et nettoyage commercial en profondeur.',
         highlights: ['Maisons, condos et appartements', 'Bureaux et commerces', 'Grand ménage et déménagement'],
@@ -657,7 +657,7 @@ export const content = {
           'Réparations, installations et entretien fiable pour maisons, bureaux et propriétés locatives.',
         description:
           'Nous offrons des services de maintenance et d’homme à tout faire pour les propriétés résidentielles et commerciales. Des petites réparations à l’entretien régulier, notre équipe aide à garder votre maison, immeuble, bureau ou propriété locative sécuritaire, propre, fonctionnelle et bien entretenue.',
-        metaTitle: 'Services de maintenance | Royal Crystal Cleaning',
+        metaTitle: 'Services de maintenance | Nettoyage Cristal Royal',
         metaDescription:
           'Services de maintenance et homme à tout faire : réparations, retouches, plomberie mineure, installation, cloisons sèches, lavage à pression et entretien saisonnier.',
         highlights: ['Réparations générales', 'Installations et ajustements', 'Entretien saisonnier'],
@@ -693,7 +693,7 @@ export const content = {
           'Pelouses, jardins et espaces extérieurs soignés pour une propriété accueillante.',
         description:
           'Nous offrons des services d’entretien de pelouse et jardin pour garder vos espaces extérieurs propres, sains, saisonniers et accueillants. De la tonte aux projets paysagers personnalisés, notre équipe aide à améliorer l’apparence et le confort de votre propriété.',
-        metaTitle: 'Entretien de pelouse et jardin | Royal Crystal Cleaning',
+        metaTitle: 'Entretien de pelouse et jardin | Nettoyage Cristal Royal',
         metaDescription:
           'Entretien de pelouse et jardin : tonte, coupe, bordures, mauvaises herbes, plates-bandes, plantation, haies, feuilles, nettoyage saisonnier et projets paysagers.',
         highlights: ['Tonte et bordures', 'Entretien de jardin', 'Nettoyage saisonnier'],
@@ -763,7 +763,7 @@ export const content = {
     testimonials: [
       {
         quote:
-          'Royal Crystal Cleaning a rendu notre maison vraiment fraîche. L’équipe était professionnelle, minutieuse et facile à joindre.',
+          'Nettoyage Cristal Royal a rendu notre maison vraiment fraîche. L’équipe était professionnelle, minutieuse et facile à joindre.',
         name: 'Marissa K.',
         label: 'Cliente en nettoyage résidentiel',
       },

@@ -1,5 +1,5 @@
 ---
-import { businessContact, getAbsoluteUrl, type Locale, type PageKey } from '../i18n';
+import { businessContact, getAbsoluteUrl, getContent, type Locale, type PageKey } from '../i18n';
 
 interface Props {
   title: string;
@@ -29,6 +29,7 @@ const canonicalUrl = getAbsoluteUrl(locale, pageKey);
 const enUrl = getAbsoluteUrl('en', pageKey);
 const frUrl = getAbsoluteUrl('fr', pageKey);
 const ogLocale = locale === 'fr' ? 'fr_CA' : 'en_US';
+const t = getContent(locale);
 ---
 
 <title>{title}</title>
@@ -46,7 +47,7 @@ const ogLocale = locale === 'fr' ? 'fr_CA' : 'en_US';
 <meta property="og:title" content={resolvedOgTitle} />
 <meta property="og:description" content={resolvedOgDescription} />
 <meta property="og:image" content={ogImage} />
-<meta property="og:site_name" content="Royal Crystal Cleaning" />
+<meta property="og:site_name" content={t.business.name} />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
