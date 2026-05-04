@@ -69,7 +69,7 @@ export const content = {
     htmlLang: 'en',
     business: {
       name: 'Royal Crystal Cleaning',
-      tagline: 'The King of Crystal Clear Cleaning',
+      tagline: 'Cleaning & maintenance by one trusted team.',
       catchphrase: 'Cleaning, maintenance, and lawn care you can trust.',
       description:
         'Residential and commercial cleaning, handyman maintenance, lawn care, and garden services.',
@@ -110,7 +110,7 @@ export const content = {
       home: {
         title: 'Royal Crystal Cleaning | Professional Cleaning, Maintenance & Lawn Care',
         description:
-          'Royal Crystal Cleaning offers professional residential and commercial cleaning, handyman maintenance, and lawn care services. The King of Crystal Clear Cleaning.',
+          'Royal Crystal Cleaning offers professional residential and commercial cleaning, handyman maintenance, and lawn care services. Cleaning & maintenance by one trusted team.',
         heroText:
           'From crystal-clear indoor cleaning to beautiful outdoor spaces, we help keep your home, property, and business fresh, clean, healthy, and well maintained.',
         servicesEyebrow: 'Property care services',
@@ -216,7 +216,7 @@ export const content = {
       },
     },
     serviceDetail: {
-      introEyebrow: 'The King of Crystal Clear Cleaning',
+      introEyebrow: 'Cleaning & maintenance by one trusted team.',
       introTitle: 'Professional care for properties that need to look and feel their best.',
       highlightsTitlePrefix: 'What is included in',
       highlightsText:
@@ -435,7 +435,7 @@ export const content = {
     htmlLang: 'fr-CA',
     business: {
       name: 'Royal Crystal Cleaning',
-      tagline: 'Le roi du nettoyage éclatant de propreté',
+      tagline: 'Nettoyage et entretien par une seule équipe de confiance.',
       catchphrase: 'Nettoyage, entretien et pelouse en toute confiance.',
       description:
         'Services de nettoyage résidentiel et commercial, maintenance, homme à tout faire, entretien de pelouse et jardin.',
@@ -584,7 +584,7 @@ export const content = {
       },
     },
     serviceDetail: {
-      introEyebrow: 'Le roi du nettoyage éclatant de propreté',
+      introEyebrow: 'Nettoyage et entretien par une seule équipe de confiance.',
       introTitle: 'Un service professionnel pour des propriétés propres, fonctionnelles et accueillantes.',
       highlightsTitlePrefix: 'Ce qui est inclus dans',
       highlightsText:
