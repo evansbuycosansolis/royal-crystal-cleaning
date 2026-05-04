@@ -67,13 +67,17 @@ const page = t.pages.services;
           <h2 class="text-2xl font-black text-blue-950">{page.multiTitle}</h2>
           <p class="mt-2 text-sm leading-7 text-slate-600">{page.multiText}</p>
         </div>
-        <a
-          href={businessContact.phoneHref}
-          class="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-blue-950 px-6 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-blue-800 sm:mt-0"
-        >
-          <Icon name="phone" class="h-4 w-4" />
-          {t.labels.call} {businessContact.phone}
-        </a>
+        <div class="mt-5 flex flex-col gap-3 sm:mt-0 sm:flex-row sm:flex-wrap sm:justify-end">
+          {businessContact.phones.map((phone) => (
+            <a
+              href={phone.href}
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-blue-950 px-6 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-blue-800"
+            >
+              <Icon name="phone" class="h-4 w-4" />
+              {phone.display}
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   </section>

@@ -24,7 +24,7 @@ const jsonLd = {
   '@id': `${businessContact.url}/#business`,
   name: t.business.name,
   slogan: t.business.tagline,
-  telephone: businessContact.phone,
+  telephone: businessContact.primaryPhone,
   email: businessContact.email,
   description: t.business.description,
   url: businessContact.url,
@@ -32,12 +32,12 @@ const jsonLd = {
   logo: new URL(businessContact.logoPng, businessContact.url).toString(),
   priceRange: '$$',
   serviceType: t.services.map((service) => service.title),
-  contactPoint: {
+  contactPoint: businessContact.phones.map((phone) => ({
     '@type': 'ContactPoint',
-    telephone: businessContact.phone,
+    telephone: phone.display,
     email: businessContact.email,
     contactType: 'customer service',
-  },
+  })),
 };
 ---
 

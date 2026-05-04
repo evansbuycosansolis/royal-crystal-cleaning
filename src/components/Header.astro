@@ -116,11 +116,11 @@ const isActive = (href: string) => {
           </a>
         </div>
         <a
-          href={businessContact.phoneHref}
+          href={businessContact.primaryPhoneHref}
           class="hidden items-center gap-2 rounded-full bg-blue-950 px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-950/20 transition hover:-translate-y-0.5 hover:bg-blue-800 sm:inline-flex"
         >
           <Icon name="phone" class="h-4 w-4" />
-          {t.labels.call} {businessContact.phone}
+          {t.labels.call} {businessContact.primaryPhone}
         </a>
 
         <label
@@ -182,11 +182,11 @@ const isActive = (href: string) => {
       </div>
       <div class="mt-2 border-t border-slate-200 pt-4">
         <a
-          href={businessContact.phoneHref}
+          href={businessContact.primaryPhoneHref}
           class="flex w-full items-center justify-center gap-2 rounded-full bg-blue-950 px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-950/20 transition hover:bg-blue-800"
         >
           <Icon name="phone" class="h-4 w-4" />
-          {t.labels.call} {businessContact.phone}
+          {t.labels.call} {businessContact.primaryPhone}
         </a>
       </div>
     </nav>

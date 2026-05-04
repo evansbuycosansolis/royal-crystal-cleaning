@@ -3,9 +3,16 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'en';
 
+const businessPhones = [
+  { display: '263-788-8063', href: 'tel:2637888063' },
+  { display: '514-814-9207', href: 'tel:5148149207' },
+] as const;
+
 export const businessContact = {
-  phone: '263-788-8063',
-  phoneHref: 'tel:2637888063',
+  phones: businessPhones,
+  primaryPhone: businessPhones[0].display,
+  primaryPhoneHref: businessPhones[0].href,
+  phoneDisplay: businessPhones.map((phone) => phone.display).join(' / '),
   email: 'info@royalcrystalcleaning.com',
   emailHref: 'mailto:info@royalcrystalcleaning.com',
   url: 'https://royalcrystalcleaning.com',
@@ -412,8 +419,8 @@ export const content = {
     contactCards: [
       {
         title: 'Call us',
-        text: businessContact.phone,
-        href: businessContact.phoneHref,
+        text: businessContact.phoneDisplay,
+        href: routes.contact.en,
         icon: 'phone',
       },
       {
@@ -773,8 +780,8 @@ export const content = {
     contactCards: [
       {
         title: 'Appelez-nous',
-        text: businessContact.phone,
-        href: businessContact.phoneHref,
+        text: businessContact.phoneDisplay,
+        href: routes.contact.fr,
         icon: 'phone',
       },
       {
