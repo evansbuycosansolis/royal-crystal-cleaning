@@ -3,22 +3,25 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'en';
 
-const businessPhones = [
-  { display: '263-788-8063', href: 'tel:2637888063' },
-  { display: '514-814-9207', href: 'tel:5148149207' },
-] as const;
+const businessPhones = {
+  en: [{ display: '263-788-8063', href: 'tel:2637888063' }],
+  fr: [{ display: '514-814-9207', href: 'tel:5148149207' }],
+} as const;
 
 export const businessContact = {
-  phones: businessPhones,
-  primaryPhone: businessPhones[0].display,
-  primaryPhoneHref: businessPhones[0].href,
-  phoneDisplay: businessPhones.map((phone) => phone.display).join(' / '),
   email: 'info@royalcrystalcleaning.com',
   emailHref: 'mailto:info@royalcrystalcleaning.com',
   url: 'https://royalcrystalcleaning.com',
   logoPng: '/royal-crystal-cleaning-logo.png',
   logoJpg: '/royal-crystal-cleaning-logo.jpg',
 };
+
+export const getBusinessPhones = (locale: Locale) => businessPhones[locale];
+
+export const getPrimaryPhone = (locale: Locale) => businessPhones[locale][0];
+
+export const getPhoneDisplay = (locale: Locale) =>
+  businessPhones[locale].map((phone) => phone.display).join(' / ');
 
 export const routes = {
   home: {
@@ -419,7 +422,7 @@ export const content = {
     contactCards: [
       {
         title: 'Call us',
-        text: businessContact.phoneDisplay,
+        text: '263-788-8063',
         href: routes.contact.en,
         icon: 'phone',
       },
@@ -780,7 +783,7 @@ export const content = {
     contactCards: [
       {
         title: 'Appelez-nous',
-        text: businessContact.phoneDisplay,
+        text: '514-814-9207',
         href: routes.contact.fr,
         icon: 'phone',
       },

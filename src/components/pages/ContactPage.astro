@@ -3,7 +3,7 @@ import Layout from '../Layout.astro';
 import Icon from '../Icon.astro';
 import PageHero from '../PageHero.astro';
 import SectionIntro from '../SectionIntro.astro';
-import { businessContact, getContent, getRoute, type Locale } from '../../i18n';
+import { businessContact, getBusinessPhones, getContent, getRoute, type Locale } from '../../i18n';
 
 interface Props {
   locale?: Locale;
@@ -12,6 +12,7 @@ interface Props {
 const { locale = 'en' } = Astro.props;
 const t = getContent(locale);
 const page = t.pages.contact;
+const phones = getBusinessPhones(locale);
 const phoneCard = t.contactCards.find((card) => card.icon === 'phone');
 const otherContactCards = t.contactCards.filter((card) => card.icon !== 'phone');
 ---
@@ -31,7 +32,7 @@ const otherContactCards = t.contactCards.filter((card) => card.icon !== 'phone')
             </div>
             <h2 class="text-xl font-black text-blue-950">{phoneCard.title}</h2>
             <div class="mt-4 grid gap-3">
-              {businessContact.phones.map((phone) => (
+              {phones.map((phone) => (
                 <a
                   href={phone.href}
                   class="inline-flex items-center gap-2 text-sm font-semibold leading-7 text-slate-600 transition hover:text-blue-900"
@@ -90,7 +91,7 @@ const otherContactCards = t.contactCards.filter((card) => card.icon !== 'phone')
           <p class="text-lg font-black">{t.business.name}</p>
           <p class="mt-2 text-sm leading-7 text-blue-100">{t.business.catchphrase}</p>
           <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            {businessContact.phones.map((phone) => (
+            {phones.map((phone) => (
               <a
                 href={phone.href}
                 class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-black text-blue-950 transition hover:bg-blue-50"

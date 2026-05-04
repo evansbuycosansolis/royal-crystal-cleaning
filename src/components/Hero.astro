@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { businessContact, getContent, getRoute, type Locale } from '../i18n';
+import { getContent, getPrimaryPhone, getRoute, type Locale } from '../i18n';
 
 interface Props {
   headline: string;
@@ -21,6 +21,7 @@ const {
 } = Astro.props;
 
 const t = getContent(locale);
+const primaryPhone = getPrimaryPhone(locale);
 const heroCards =
   locale === 'fr'
     ? [
@@ -64,7 +65,7 @@ const heroCards =
       {showButtons && (
         <div class="mt-9 flex flex-col gap-3 sm:flex-row">
           <a
-            href={businessContact.primaryPhoneHref}
+            href={primaryPhone.href}
             class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-base font-black text-blue-950 shadow-xl shadow-blue-950/25 transition hover:-translate-y-0.5 hover:bg-blue-50"
           >
             <Icon name="phone" class="h-5 w-5" />

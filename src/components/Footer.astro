@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { businessContact, getContent, getRoute, type Locale } from '../i18n';
+import { businessContact, getBusinessPhones, getContent, getRoute, type Locale } from '../i18n';
 
 interface Props {
   locale?: Locale;
@@ -9,6 +9,7 @@ interface Props {
 const { locale = 'en' } = Astro.props;
 const t = getContent(locale);
 const year = new Date().getFullYear();
+const phones = getBusinessPhones(locale);
 ---
 
 <footer class="relative overflow-hidden bg-blue-950 text-white">
@@ -34,7 +35,7 @@ const year = new Date().getFullYear();
           {t.business.catchphrase} {t.business.description}
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
-          {businessContact.phones.map((phone) => (
+          {phones.map((phone) => (
             <a
               href={phone.href}
               class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-black text-blue-950 transition hover:-translate-y-0.5 hover:bg-blue-50"

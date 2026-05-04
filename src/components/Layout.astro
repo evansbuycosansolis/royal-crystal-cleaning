@@ -3,7 +3,7 @@ import '../styles/global.css';
 import SEO from './SEO.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
-import { businessContact, getContent, type Locale, type PageKey } from '../i18n';
+import { businessContact, getBusinessPhones, getContent, getPrimaryPhone, type Locale, type PageKey } from '../i18n';
 
 interface Props {
   title: string;
@@ -17,6 +17,8 @@ interface Props {
 
 const { title, description, ogTitle, ogDescription, ogImage, locale = 'en', pageKey } = Astro.props;
 const t = getContent(locale);
+const phones = getBusinessPhones(locale);
+const primaryPhone = getPrimaryPhone(locale);
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -24,7 +26,7 @@ const jsonLd = {
   '@id': `${businessContact.url}/#business`,
   name: t.business.name,
   slogan: t.business.tagline,
-  telephone: businessContact.primaryPhone,
+  telephone: primaryPhone.display,
   email: businessContact.email,
   description: t.business.description,
   url: businessContact.url,
@@ -32,7 +34,7 @@ const jsonLd = {
   logo: new URL(businessContact.logoPng, businessContact.url).toString(),
   priceRange: '$$',
   serviceType: t.services.map((service) => service.title),
-  contactPoint: businessContact.phones.map((phone) => ({
+  contactPoint: phones.map((phone) => ({
     '@type': 'ContactPoint',
     telephone: phone.display,
     email: businessContact.email,
